@@ -1,0 +1,56 @@
+
+https://www.javatpoint.com/pyspark-installation
+
+
+
+java -version
+python --version
+
+Next install the pyspark with Jupyter
+
+gow --list
+
+
+1.for pyspark - we need GOW(GNU with windows so that we can use below commands:
+curl, gzip and tar)
+2.Download and install the Anaconda version based on python interpreter.
+3.Download apache spark with hadoop
+4. download winutils.exe in the sparkhome/bin usin cmd:
+	curl -k -L -o winutlis.exe  
+https://github.com/steveloughran/winutlis/blob/master/hadoop-2.6.0/bin/winutlis.exe?raw=True   
+
+
+5. Update env to easily use the notebook using cmd:
+setx SPARK_HOME C:\Spark\sparkhome.    
+setx PYSPARK_DRIVER_PYTHON ipython, and hit the enter key.
+setx PYSPARK_DRIVER_PYTHON ipython, and hit the enter key.
+setx PATH "%PATH%" C:\Spark\sparkhome
+
+6. Add path to system variable:
+path: C:\Spark\sparkhome\bin
+
+7. AFTER RESTART:
+open anaconda prompt and do:
+pyspark --master local[2]  
+Using above cmd, opens the jupyter notebook automatically.
+
+8. Run the following cod eto check it:
+
+import findspark  
+findspark.init()  
+import pyspark # only run after findspark.init()  
+from pyspark.sql import SparkSession  
+spark = SparkSession.builder.getOrCreate()  
+df = spark.sql('''select 'PySpark' as hello ''')  
+df.show()  
+
+
+----  IF you  need to install pyspark on macos----------
+Step - 1: Create a new Conda environment
+
+	conda create -n pyspark_env python=3  
+source activate pyspark_env  
+
+
+
+
